@@ -1,0 +1,125 @@
+/*before i after NIE ISTNIEJĄ w dokumencie, jako programiści jesteśmy w stanie dodać taki element. Aby utworzyć before i afer MUSIMY jestwić właściwość CONTENT (może być pusta) np. content: ''; */
+#before_after p::before {
+    content: 'P ';
+    color: red;
+}
+
+#before_after p::after {
+    content: ' P';
+    color: red;
+}
+
+/*first-letter zmienia pierwszą literę w danym elemencie*/
+#before_after p::first-letter {
+    color: yellow;
+    font-weight: bold;
+}
+
+/*first line zmienia wygląd pierwszej linii tekstu. ROZDZIELCZOŚĆ I WYGLĄD OKNA MA ZNACZENIE!*/
+#before_after p::first-line {
+    font-size: 20px;
+    color: red;
+}
+
+/*pseudo-klasy linków*/
+/* :link - nieodwiedzony*/
+#linki a:link {
+    color: hotpink;
+    font-style: italic;
+}
+
+/*visited - odwiedzony*/
+#linki a:visited {
+    color: grey;
+    text-decoration: none;
+}
+
+/*:hover - po najechaniu myszką*/
+#linki a:hover {
+    border: 1px solid black;
+}
+
+/*:active - od momentu kliknięcia do momentu puszczenia LPM*/
+#linki a:active {
+    color: red;
+    font-weight: bold;
+}
+
+#inputy input:focus {
+    border: 3px solid black;
+}
+
+/*:target - określa wygląd elementu, do którego prowadzi KOTWICA (to jest moim zdaniem fajne przy podpowiedziach - przypisek*/
+
+div:target {
+    border: 1px solid black;
+}
+
+/*:lang - pkreśla wygląd elementu o podanym atrybucie lang w HTML*/
+div:lang(pl) {
+    border: 3px solid blue;
+}
+
+/*:first-child - określa wygląd pierwszego zagnieżdżonego elementu*/
+#childs ul li:first-child {
+    font-size: 30px;
+    color: red;
+}
+
+/*last-child - określa wygląd ostatniego zagnieżdżonego elementu*/
+
+#childs ul li:last-child {
+    background-color: yellow;
+}
+
+/*:only-child - określa wygląd JEDYNEGO elementu swojego rodzica (w tym dokumencie #before-after ma tylko jedno p; jeśli dodalibyśmy drugi paragraf to wtedy cała reguła w stosunku do niego nie zadziała. Odwrotnie niż 500+ :D)*/
+#before_after p:only-child {
+    color: violet;
+}
+
+/*:empty - łapie element, który nie ma zawartości (nic zagnieżdżonego, łącznie z tekstem. bez żadnego znaku - choćby spacji)*/
+#childs span:empty {
+    display: block;
+    height: 200px;
+    width: 200px;
+    background-color: green;
+}
+
+/*::nth-child() / :nth-last-child() - wyszukują wedle podanego wzoru. nth-child() rozpoczyna liczenie od pierwszego do ostatniego dziecka, natomiast :nth-last-child() rozpoczyna liczenie od ostatniego do pierwszego dziecka*/
+/*
+#childs ul li:nth-child(odd){
+    background-color: blueviolet;
+}
+
+#childs ul li:nth-child(5) {
+    background-color: green;
+}
+*/
+
+#childs ul li:nth-child(5n + 2) {
+    background-color: green;}
+    
+/*selektory atrybutów*/
+/*po nazwie atrybutu*/
+
+#atrybuty input[type="tel"] {
+    border: 5px solid black;
+}
+
+/*po występującej wartości atrybutu należy podać DOKŁADNĄ WARTOŚĆ*/
+#atrybuty input[type~="opis"] {
+    border: 5px solid red;
+}
+
+/*po występującej wartości atrybutu szuka podanego przez nas ciągu znaków*/
+#atrybuty input[type*="op"] {
+    border: 5px solid violet;
+}
+
+/*po wartości atrybutu która zaczyna się od podanego ciągu znaków */
+#atrybuty input[type^="p"] {
+    border: 5px solid red;}
+
+/*po wartości atrybutu która kończy się od podanego ciągu znaków */
+#atrybuty input[type$="q"] {
+    border: 5px solid red;}
